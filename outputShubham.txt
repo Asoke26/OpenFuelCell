@@ -1,0 +1,1823 @@
+(fuelCellFoam | tee log.srun);
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-fa1285188035
+Exec   : fuelCellFoam
+Date   : Oct 30 2019
+Time   : 13:53:02
+Host   : "shubham"
+PID    : 1060
+I/O    : uncollated
+Case   : /home/srohal/openfuelcell/run/quickTest
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading cell properties
+
+galvanostatic run
+    V     = V [1 2 -3 0 0 -1 0] 0.8
+    ibar0 = ibar0 [0 -2 0 0 0 1 0] 5000
+    Rhat  = Rhat [1 4 -3 0 0 -2 0] 1e-05
+    Rhat0  = Rhat0 [1 4 -3 0 0 -2 0] 1e-05
+    Tinit = Tinit [0 0 0 1 0 0 0] 1000
+
+    anodeName              = fuel_to_electrolyte
+    fuelInletName          = fuelInlet
+    fuelOutletName         = fuelOutlet
+    cathodeName            = air_to_electrolyte
+    airInletName           = airInlet
+    airOutletName          = airOutlet
+    electrolyteAnodeName   = electrolyte_to_fuel
+    electrolyteCathodeName = electrolyte_to_air
+
+Reading cell field T
+
+Reading air properties
+
+    muA   = mu [1 -1 -1 0 0 0 0] 4.336e-05
+    rhoA  = rho [1 -3 0 0 0 0 0] 0.3516
+    CpA   = Cp [0 2 -2 -1 0 0 0] 1149.3
+    kA    = k [1 1 -3 -1 0 0 0] 0.0692
+    dHydAir  = dHyd [0 1 0 0 0 0 0] 0.0017143
+
+Creating air field p
+Creating air field rho
+Creating air field mu
+Creating air field nu
+Creating air field U
+Creating air face flux field phi
+Creating air field Tair
+Creating air field cp
+Creating air field k
+Creating air porous zones
+Porosity region cathode:
+    selecting model: DarcyForchheimer
+    creating porous zone: cathode
+Porosity region cfl:
+    selecting model: DarcyForchheimer
+    creating porous zone: cfl
+    number of porous zones = 2
+    zone 1(4) cathode : size = 4800; porosity = 0.5
+    zone 1(5) cfl : size = 2880; porosity = 0.25
+
+
+Reading air sofcSpeciesProperties
+              name    MW[kg/kmol]     ne      rSign   hForm       sForm   
+airSpecies[0] O2      31.9988         4       -1      0           205.152 
+airSpecies[1] N2      28.0134         0       0       0           191.609 
+
+airInertSpecie = N2
+
+CpCoeffs(O2) 34.85 -57.975 203.68 -300.37 231.72 -91.821 14.776
+CpCoeffs(N2) 29.027 4.8987 -38.04 105.17 -113.56 55.554 -10.35
+
+muCoeffs(O2) -1.6918 889.75 -892.79 905.98 -598.36 221.64 -34.754
+muCoeffs(N2) 1.2719 771.45 -809.2 832.47 -553.93 206.15 -32.43
+
+kCoeffs(O2) -0.1857 11.118 -7.3734 6.713 -4.1797 1.491 -0.2278
+kCoeffs(N2) -0.3216 14.81 -25.473 38.837 -32.133 13.493 -2.2741
+
+ToddYoung checks
+O2
+    Cp(1473) = 36.46984
+    mu(1473) = 632.3691
+    k(1473)  = 9.983227
+N2
+    Cp(1473) = 34.73966
+    mu(1473) = 532.9934
+    k(1473)  = 9.412344
+
+Selecting activation overpotential model...butlerVolmer
+Reading electrolyte properties
+
+    rhoElectrolyte  = rho [1 -3 0 0 0 0 0] 6000
+    CpElectrolyte   = Cp [0 2 -2 -1 0 0 0] 550
+    kElectrolyte    = k [1 1 -3 -1 0 0 0] 2.4
+
+creating current density field
+
+creating voltage field
+
+creating Nernst potential field
+
+Reading fuel properties
+
+    muF       = mu [1 -1 -1 0 0 0 0] 2.41e-05
+    rhoF      = rho [1 -3 0 0 0 0 0] 0.0305
+    CpF       = Cp [0 2 -2 -1 0 0 0] 12200
+    kF        = k [1 1 -3 -1 0 0 0] 0.432
+    dHydFuel  = dHyd [0 1 0 0 0 0 0] 0.0017143
+
+Reading fuel field p
+
+Reading fuel field rho
+
+Creating fuel field mu
+
+Creating fuel field nu
+Reading fuel field U
+
+Reading/calculating fuel face flux field phi
+
+Reading fuel field cp
+
+Creating fuel field k
+Reading fuel porous zones
+Porosity region anode:
+    selecting model: DarcyForchheimer
+    creating porous zone: anode
+Porosity region afl:
+    selecting model: DarcyForchheimer
+    creating porous zone: afl
+    number of porous zones = 2
+    zone 1(4) anode : size = 9600; porosity = 0.5
+    zone 1(5) afl : size = 2880; porosity = 0.25
+
+
+Reading fuel sofcSpeciesProperties
+               name    MW[kg/kmol]     ne      rSign   hForm       sForm   
+fuelSpecies[0] H2      2.01594         2       -1      0           130.68  
+fuelSpecies[1] H2O     18.01534        2       1       -241834.9   188.835 
+
+fuelInertSpecie = H2O
+
+CpCoeffs(H2) 21.157 56.036 -150.55 199.29 -136.15 46.903 -6.4725
+CpCoeffs(H2O) 37.373 -41.205 146.01 -217.08 181.54 -79.409 14.015
+
+muCoeffs(H2) 15.553 299.78 -244.34 249.41 -167.51 62.966 -9.9892
+muCoeffs(H2O) -6.7541 244.93 419.5 -522.38 348.12 -126.96 19.591
+
+kCoeffs(H2) 1.504 62.892 -47.19 47.763 -31.939 11.972 -1.8954
+kCoeffs(H2O) 2.0103 -7.9139 35.922 -41.39 35.993 -18.974 4.1531
+
+ToddYoung checks
+H2
+    Cp(1473) = 32.15625
+    mu(1473) = 270.1053
+    k(1473)  = 57.7045
+H2O
+    Cp(1473) = 46.82644
+    mu(1473) = 553.2606
+    k(1473)  = 16.30336
+
+Selecting activation overpotential model...butlerVolmer
+Reading interconnect properties
+
+  interconnect
+    rhointerconnect = rho [1 -3 0 0 0 0 0] 7900
+    Cpinterconnect  = Cp [0 2 -2 -1 0 0 0] 660
+    kinterconnect   = k [1 1 -3 -1 0 0 0] 24
+
+
+Reading rxnProperties
+rxnSpCoef contents: 
+4
+(
+O2
+H2
+e
+H2O
+)
+
+rxnSpecies stoichiometric coefficients: 
+stoichCoeff O2 = 0.5
+stoichCoeff H2 = 1
+stoichCoeff H2O = 1
+stoichCoeff e = 2
+
+Setting special patch IDs
+
+    electrolyte thickness (calculated) hE = hE [0 1 0 0 0 0 0] 8e-06
+
+
+Creating air diffusivity models
+zone 3 air
+Selecting diffusivity model binaryFSG
+cathodeZone 0, airZone 4: cathode
+size = 4800
+Selecting diffusivity model fixedDiffusivity
+cathodeZone 1, airZone 5: cfl
+size = 2880
+Selecting diffusivity model fixedDiffusivity
+
+Creating fuel diffusivity models
+zone 1 fuel
+Selecting diffusivity model binaryFSG
+anodeZone 0, fuelZone 4: anode
+size = 9600
+Selecting diffusivity model fixedDiffusivity
+anodeZone 1, fuelZone 5: afl
+size = 2880
+Selecting diffusivity model fixedDiffusivity
+
+Starting time loop
+
+Time = 1
+
+Tair min mean max  = 1000    1000    1000
+Tfuel min mean max = 1000    1000    1000
+min,mean,max(rhoAir): 0.3515907   0.3515907   0.3515907
+min,mean,max(rhoFuel): 0.03046576   0.03046576   0.03046576
+min,mean,max(muAir): 4.330221e-05   4.330221e-05   4.330221e-05
+min,mean,max(muFuel): 2.429684e-05   2.429684e-05   2.429684e-05
+min,mean,max(nuAir): 0.0001231609   0.0001231609   0.0001231609
+min,mean,max(nuFuel): 0.0007975131   0.0007975131   0.0007975131
+min,mean,max(kAir): 0.07035484   0.07035484   0.07035484
+min,mean,max(kFuel): 0.3584587   0.3584587   0.3584587
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 1, Final residual = 2.514245e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.9999728, Final residual = 3.420012e-11, No Iterations 7
+DILUPBiCG:  Solving for Uz, Initial residual = 0.9999967, Final residual = 1.985155e-15, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 1, Final residual = 9.977054e-10, No Iterations 152
+time step continuity errors : sum local = 1.634324e-08, global = 2.728841e-12
+DICPCG:  Solving for p, Initial residual = 0.08518933, Final residual = 6.996171e-10, No Iterations 148
+time step continuity errors : sum local = 1.760927e-08, global = -8.076417e-12
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 1, Final residual = 9.371477e-11, No Iterations 4
+DILUPBiCG:  Solving for Uy, Initial residual = 0.9999679, Final residual = 1.513676e-10, No Iterations 8
+DILUPBiCG:  Solving for Uz, Initial residual = 0.9999967, Final residual = 4.897408e-11, No Iterations 7
+DICPCG:  Solving for p, Initial residual = 1, Final residual = 8.49552e-10, No Iterations 159
+time step continuity errors : sum local = 1.74678e-07, global = -1.979529e-09
+DICPCG:  Solving for p, Initial residual = 0.1560986, Final residual = 6.28875e-10, No Iterations 155
+time step continuity errors : sum local = 1.732605e-07, global = -6.134887e-10
+ReAir  = 13.91956
+ReFuel = 2.151973
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  7.986763e-05  0.0001714762
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0002899713  0.0007537382
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.9994925, Final residual = 4.905511e-10, No Iterations 40
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.782 , 0.782 , 0.782
+min,mean,max(YH2O): 0.218 , 0.218 , 0.218
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.9999378, Final residual = 8.947123e-10, No Iterations 49
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.233 , 0.233 , 0.233
+min,mean,max(YN2): 0.767 , 0.767 , 0.767
+
+Solving electrochemistry
+min,max(anodeT): 1000 , 1000
+min,max(cathodeT): 1000 , 1000
+min,mean,max(XO2): 0.2100766 , 0.2100766 , 0.2100766
+min,mean,max(XH2): 0.9697487 , 0.9697487 , 0.9697487
+min,mean,max(XH2O): 0.0302513 , 0.0302513 , 0.0302513
+H2  1
+   mean H(T) = 20673.31
+   mean S(T) = 166.21
+H2O  1
+   mean H(T) = -215838.2
+   mean S(T) = 232.7318
+O2  0.5
+   mean H(T) = 11348.03
+   mean S(T) = 121.7829
+ mean deltaHrxn = -247859.5
+ mean anodeT    = 1000
+ mean deltaSrxn = -55.2611
+ mean TdeltaS   = -55261.1
+ mean deltaG    = -192598.4
+
+min,mean,max Nernst = 1.11386  1.11386  1.11386
+min,mean,max(i): 5000 , 5000 , 5000
+min,mean,max(iNew): 8122.906 , 8122.906 , 8122.906
+min,mean,max(iOld): 5000 , 5000 , 5000
+min,mean,max calBV(etaAn) = 0.08063711  0.08288937  0.08563607
+min,mean,max calBV(etaCa) = 0.03356079  0.03489111  0.03661926
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.11386 , 1.11386
+ibar0 = 5000    ibar = 5000    V = 0.8
+
+stack Voltage =0.8
+min,mean,max(current): 5000 , 5000 , 5000
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 3.027758e+08  3.027758e+08  3.027758e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.397973
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.724623e-06   cathode: 1.989865e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.348373e-07   chem = 1.989865e-07
+      utilization by chemRate = 0.2698835
+      utilization by outRate  = 0.1389763
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.05014499
+s species[] isFlux[] mflux[] = 1 H2O true 0.448118
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 2.095762e-07   anode: 1.989865e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 1.638886e-07   chem = 2.507249e-08
+      utilization by chemRate = 0.1168015
+      utilization by outRate  = 0.2365167
+
+
+min mean max rhoCpF(air) = 404.0282 404.0282 404.0282
+min mean max rhoCpF(fuel) = 372.2658 372.2658 372.2658
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 1.860744e-08, global = -5.744699e-11
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 1, Final residual = 4.909149e-11, No Iterations 239
+T min mean max     = 1065.634    1162.734    1167.331
+
+ sum TcellEqn.source() =   1.162659
+
+ExecutionTime = 1.72 s
+
+
+Time = 2
+
+Tair min mean max  = 1065.634    1162.299    1167.329
+Tfuel min mean max = 1127.215    1162.908    1167.327
+min,mean,max(rhoAir): 0.2343724   0.3024921   0.370514
+min,mean,max(rhoFuel): 0.02136403   0.02619329   0.03105822
+min,mean,max(muAir): 4.514203e-05   4.776359e-05   4.789775e-05
+min,mean,max(muFuel): 2.678029e-05   2.746385e-05   2.754814e-05
+min,mean,max(nuAir): 0.0001291957   0.0001580163   0.0002031309
+min,mean,max(nuFuel): 0.0008864779   0.001049296   0.001279168
+min,mean,max(kAir): 0.07406554   0.07938832   0.0796615
+min,mean,max(kFuel): 0.3941291   0.4039584   0.4051707
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.9999396, Final residual = 1.901445e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2461869, Final residual = 4.073492e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.2364449, Final residual = 2.771308e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.1748559, Final residual = 6.992766e-10, No Iterations 148
+time step continuity errors : sum local = 1.330304e-08, global = -1.074825e-11
+DICPCG:  Solving for p, Initial residual = 0.006342376, Final residual = 8.466932e-10, No Iterations 140
+time step continuity errors : sum local = 8.735777e-08, global = 2.620374e-10
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.8927965, Final residual = 5.590621e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.252145, Final residual = 6.94245e-11, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.2199207, Final residual = 1.057593e-10, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.2758127, Final residual = 9.529066e-10, No Iterations 160
+time step continuity errors : sum local = 1.489781e-07, global = 1.208414e-10
+DICPCG:  Solving for p, Initial residual = 0.01567583, Final residual = 6.046324e-10, No Iterations 154
+time step continuity errors : sum local = 2.034939e-07, global = -4.45224e-10
+ReAir  = 13.09215
+ReFuel = 1.937385
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.950651e-05  0.0002247246
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003529411  0.0009867242
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.9999999, Final residual = 8.795021e-10, No Iterations 42
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7694102 , 0.7764257 , 0.7819142
+min,mean,max(YH2O): 0.2180858 , 0.2235743 , 0.2305898
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.9999999, Final residual = 8.260538e-10, No Iterations 49
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.2254424 , 0.2296618 , 0.2329815
+min,mean,max(YN2): 0.7670185 , 0.7703382 , 0.7745576
+
+Solving electrochemistry
+min,max(anodeT): 1144.629 , 1167.33
+min,max(cathodeT): 1144.606 , 1167.33
+min,mean,max(XO2): 0.2028272 , 0.2038234 , 0.2059195
+min,mean,max(XH2): 0.9674967 , 0.9675586 , 0.9677343
+min,mean,max(XH2O): 0.0322657 , 0.03244144 , 0.03250334
+min,mean,max Nernst = 1.080404  1.081212  1.085068
+min,mean,max(i): 3334.691 , 4297.392 , 5268.008
+min,mean,max(iNew): 7949.87 , 8233.988 , 8433.122
+min,mean,max(iOld): 3334.691 , 4297.392 , 5268.008
+min,mean,max calBV(etaAn) = 0.01410392  0.01576126  0.01940493
+min,mean,max calBV(etaCa) = 0.003032217  0.003274217  0.004143515
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.080404 , 1.085068
+ibar0 = 5000    ibar = 4297.392    V = 0.7929739
+
+stack Voltage =0.7929739
+min,mean,max(current): 3334.691 , 4297.392 , 5268.008
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.068453e+08  2.666741e+08  3.269618e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3420492
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.35625e-06   cathode: 1.710246e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 5.457083e-07   chem = 1.710246e-07
+      utilization by chemRate = 0.231959
+      utilization by outRate  = 0.2598611
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04309853
+s species[] isFlux[] mflux[] = 1 H2O true 0.3851477
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 2.428994e-07   anode: 1.710246e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 1.895476e-07   chem = 2.154926e-08
+      utilization by chemRate = 0.1003884
+      utilization by outRate  = 0.1169827
+
+
+min mean max rhoCpF(air) = 275.7541 356.1669 436.5575
+min mean max rhoCpF(fuel) = 263.5802 325.6627 384.9106
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1261116, global = -4.256093e-06
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.09241052, Final residual = 5.850663e-11, No Iterations 241
+T min mean max     = 1063.219    1148.499    1152.791
+
+ sum TcellEqn.source() =   6.026381
+
+ExecutionTime = 2.67 s
+
+
+Time = 3
+
+Tair min mean max  = 1063.219    1148.13    1152.789
+Tfuel min mean max = 1117.678    1148.655    1152.788
+min,mean,max(rhoAir): 0.2111622   0.3058626   0.3984423
+min,mean,max(rhoFuel): 0.02018985   0.02678317   0.03390381
+min,mean,max(muAir): 4.507482e-05   4.735792e-05   4.749182e-05
+min,mean,max(muFuel): 2.659899e-05   2.730682e-05   2.753208e-05
+min,mean,max(nuAir): 0.00011906   0.0001550437   0.0002235446
+min,mean,max(nuFuel): 0.0008116233   0.00102104   0.001348002
+min,mean,max(kAir): 0.07393018   0.07860327   0.07885852
+min,mean,max(kFuel): 0.3914485   0.3980344   0.4005365
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.9799746, Final residual = 5.021517e-11, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.175881, Final residual = 2.820848e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.2222544, Final residual = 1.237541e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.008348419, Final residual = 7.223617e-10, No Iterations 141
+time step continuity errors : sum local = 7.543328e-08, global = 2.494003e-10
+DICPCG:  Solving for p, Initial residual = 0.003403491, Final residual = 9.830057e-10, No Iterations 110
+time step continuity errors : sum local = 1.54147e-07, global = 2.207364e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.5462742, Final residual = 7.957426e-12, No Iterations 4
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1673901, Final residual = 7.849321e-11, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1655454, Final residual = 4.855384e-11, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.0196971, Final residual = 6.78751e-10, No Iterations 156
+time step continuity errors : sum local = 2.230165e-07, global = 2.851892e-10
+DICPCG:  Solving for p, Initial residual = 0.008152891, Final residual = 6.091892e-10, No Iterations 154
+time step continuity errors : sum local = 2.64993e-07, global = -1.01537e-09
+ReAir  = 13.13745
+ReFuel = 1.952543
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.770203e-05  0.000219849
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.000347109  0.0009653397
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.2971784, Final residual = 7.221881e-10, No Iterations 40
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7579535 , 0.7700803 , 0.7816801
+min,mean,max(YH2O): 0.2183199 , 0.2299197 , 0.2420465
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.2478727, Final residual = 3.349947e-10, No Iterations 47
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.2187805 , 0.2264524 , 0.2329572
+min,mean,max(YN2): 0.7670428 , 0.7735476 , 0.7812195
+
+Solving electrochemistry
+min,max(anodeT): 1132.643 , 1152.79
+min,max(cathodeT): 1132.622 , 1152.79
+min,mean,max(XO2): 0.1966564 , 0.1993827 , 0.2041438
+min,mean,max(XH2): 0.9654405 , 0.9656529 , 0.9659297
+min,mean,max(XH2O): 0.03407025 , 0.03434715 , 0.03455947
+min,mean,max Nernst = 1.079098  1.080295  1.08424
+min,mean,max(i): 3002.955 , 4341.321 , 5663.173
+min,mean,max(iNew): 12596.88 , 13102.56 , 13231.6
+min,mean,max(iOld): 3002.955 , 4341.321 , 5663.173
+min,mean,max calBV(etaAn) = 0.01409066  0.01776402  0.02127048
+min,mean,max calBV(etaCa) = 0.003232205  0.003967849  0.004857799
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.079098 , 1.08424
+ibar0 = 5000    ibar = 4341.321    V = 0.7863871
+
+stack Voltage =0.7863871
+min,mean,max(current): 3002.955 , 4341.321 , 5663.173
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 1.885958e+08  2.727581e+08  3.558664e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3455457
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.702721e-06   cathode: 1.727728e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.208035e-07   chem = 1.727728e-07
+      utilization by chemRate = 0.2343302
+      utilization by outRate  = 0.1580102
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04353909
+s species[] isFlux[] mflux[] = 1 H2O true 0.3890848
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 3.871213e-07   anode: 1.727728e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.010325e-07   chem = 2.176955e-08
+      utilization by chemRate = 0.1014146
+      utilization by outRate  = -0.4023756
+
+
+min mean max rhoCpF(air) = 248.0866 359.5429 468.7844
+min mean max rhoCpF(fuel) = 247.1787 330.1005 412.8308
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1295924, global = 0.0007262346
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.0336878, Final residual = 7.513894e-11, No Iterations 250
+T min mean max     = 1062.33    1145.403    1149.619
+
+ sum TcellEqn.source() =   6.103897
+
+ExecutionTime = 3.66 s
+
+
+Time = 4
+
+Tair min mean max  = 1062.33    1145.027    1149.617
+Tfuel min mean max = 1115.177    1145.562    1149.615
+min,mean,max(rhoAir): 0.2211294   0.3064447   0.3884561
+min,mean,max(rhoFuel): 0.02123085   0.02709878   0.03375647
+min,mean,max(muAir): 4.504973e-05   4.724851e-05   4.739051e-05
+min,mean,max(muFuel): 2.655674e-05   2.737791e-05   2.769463e-05
+min,mean,max(nuAir): 0.0001217691   0.0001543514   0.0002129284
+min,mean,max(nuFuel): 0.0008204243   0.001011487   0.001283922
+min,mean,max(kAir): 0.07388016   0.07841971   0.0786755
+min,mean,max(kFuel): 0.3873475   0.3949039   0.3991118
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.5896074, Final residual = 9.192651e-11, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1021941, Final residual = 2.694617e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1513947, Final residual = 3.288704e-11, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.004682382, Final residual = 7.845052e-10, No Iterations 108
+time step continuity errors : sum local = 1.23165e-07, global = -4.207992e-09
+DICPCG:  Solving for p, Initial residual = 0.002721433, Final residual = 9.258476e-10, No Iterations 90
+time step continuity errors : sum local = 1.550069e-07, global = 2.260327e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.2629604, Final residual = 4.390494e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.09219095, Final residual = 6.820506e-11, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.09792481, Final residual = 5.502337e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.01177659, Final residual = 8.705431e-10, No Iterations 154
+time step continuity errors : sum local = 3.442248e-07, global = -1.796937e-10
+DICPCG:  Solving for p, Initial residual = 0.006790725, Final residual = 9.455173e-10, No Iterations 153
+time step continuity errors : sum local = 3.77365e-07, global = 3.494817e-11
+ReAir  = 13.15021
+ReFuel = 1.955783
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.730327e-05  0.000218792
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003458511  0.0009607072
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.2400912, Final residual = 4.887824e-10, No Iterations 40
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7472847 , 0.7636258 , 0.7812749
+min,mean,max(YH2O): 0.2187251 , 0.2363742 , 0.2527153
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.1898352, Final residual = 3.303033e-10, No Iterations 44
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.2122741 , 0.2234259 , 0.2329336
+min,mean,max(YN2): 0.7670664 , 0.7765741 , 0.7877259
+
+Solving electrochemistry
+min,max(anodeT): 1130.192 , 1149.618
+min,max(cathodeT): 1130.173 , 1149.618
+min,mean,max(XO2): 0.1906401 , 0.1954947 , 0.2029693
+min,mean,max(XH2): 0.9634799 , 0.9638959 , 0.9643508
+min,mean,max(XH2O): 0.03564918 , 0.03610412 , 0.03652007
+min,mean,max Nernst = 1.076069  1.077816  1.08223
+min,mean,max(i): 3144.699 , 4347.266 , 5521.001
+min,mean,max(iNew): 12618.27 , 13081.35 , 13220.12
+min,mean,max(iOld): 3144.699 , 4347.266 , 5521.001
+min,mean,max calBV(etaAn) = 0.0146342  0.01800665  0.0212903
+min,mean,max calBV(etaCa) = 0.003440948  0.004145758  0.005032121
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.076069 , 1.08223
+ibar0 = 5000    ibar = 4347.266    V = 0.7798598
+
+stack Voltage =0.7798598
+min,mean,max(current): 3144.699 , 4347.266 , 5521.001
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.000309e+08  2.766311e+08  3.513762e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3460189
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.98339e-06   cathode: 1.730095e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.791926e-07   chem = 1.730095e-07
+      utilization by chemRate = 0.2346511
+      utilization by outRate  = 0.07881763
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04359872
+s species[] isFlux[] mflux[] = 1 H2O true 0.3896176
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.877729e-07   anode: 1.730095e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.777151e-07   chem = 2.179936e-08
+      utilization by chemRate = 0.1015534
+      utilization by outRate  = -0.7596054
+
+
+min mean max rhoCpF(air) = 259.7696 360.156 457.0553
+min mean max rhoCpF(fuel) = 258.6503 331.5583 406.1741
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1292041, global = 0.0005386531
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.01672175, Final residual = 4.841004e-11, No Iterations 171
+T min mean max     = 1062.877    1145.587    1149.794
+
+ sum TcellEqn.source() =   6.046226
+
+ExecutionTime = 4.4 s
+
+
+Time = 5
+
+Tair min mean max  = 1062.877    1145.201    1149.792
+Tfuel min mean max = 1115.389    1145.751    1149.79
+min,mean,max(rhoAir): 0.2471993   0.3062707   0.3620816
+min,mean,max(rhoFuel): 0.02332077   0.02730382   0.03218693
+min,mean,max(muAir): 4.50644e-05   4.722827e-05   4.737757e-05
+min,mean,max(muFuel): 2.657097e-05   2.751459e-05   2.79186e-05
+min,mean,max(nuAir): 0.0001305068   0.0001542892   0.0001903756
+min,mean,max(nuFuel): 0.0008673892   0.001008323   0.001171813
+min,mean,max(kAir): 0.07391048   0.07841547   0.07867471
+min,mean,max(kFuel): 0.3843147   0.3926342   0.3983023
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1833329, Final residual = 4.211466e-11, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.04402099, Final residual = 4.678598e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.08765442, Final residual = 1.886945e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.003995971, Final residual = 9.359924e-10, No Iterations 137
+time step continuity errors : sum local = 1.561106e-07, global = 1.042453e-09
+DICPCG:  Solving for p, Initial residual = 0.002942686, Final residual = 9.805048e-10, No Iterations 90
+time step continuity errors : sum local = 1.499036e-07, global = 1.030873e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.1437733, Final residual = 2.927988e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.03498919, Final residual = 1.225947e-10, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.04704549, Final residual = 1.18222e-10, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.008624269, Final residual = 6.552508e-10, No Iterations 154
+time step continuity errors : sum local = 2.781768e-07, global = 7.485693e-10
+DICPCG:  Solving for p, Initial residual = 0.006935252, Final residual = 9.78861e-10, No Iterations 153
+time step continuity errors : sum local = 3.453165e-07, global = 1.856863e-09
+ReAir  = 13.14667
+ReFuel = 1.954663
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.732323e-05  0.0002188503
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.000345937  0.0009609631
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.1905924, Final residual = 5.130961e-10, No Iterations 40
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7373655 , 0.7572155 , 0.7807028
+min,mean,max(YH2O): 0.2192972 , 0.2427845 , 0.2626345
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.1475922, Final residual = 6.365467e-10, No Iterations 42
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.2059097 , 0.2205724 , 0.2329114
+min,mean,max(YN2): 0.7670886 , 0.7794276 , 0.7940903
+
+Solving electrochemistry
+min,max(anodeT): 1130.645 , 1149.793
+min,max(cathodeT): 1130.626 , 1149.793
+min,mean,max(XO2): 0.1847648 , 0.1919386 , 0.2022239
+min,mean,max(XH2): 0.961614 , 0.9622408 , 0.9629247
+min,mean,max(XH2O): 0.03707526 , 0.03775919 , 0.03838602
+min,mean,max Nernst = 1.072699  1.075024  1.080134
+min,mean,max(i): 3515.442 , 4343.944 , 5146.24
+min,mean,max(iNew): 12830.14 , 13247.82 , 13393.48
+min,mean,max(iOld): 3515.442 , 4343.944 , 5146.24
+min,mean,max calBV(etaAn) = 0.01574142  0.01771244  0.02082382
+min,mean,max calBV(etaCa) = 0.003754021  0.004149569  0.005022558
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.072699 , 1.080134
+ibar0 = 5000    ibar = 4343.944    V = 0.7732992
+
+stack Voltage =0.7732992
+min,mean,max(current): 3515.442 , 4343.944 , 5146.24
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.264994e+08  2.799847e+08  3.317484e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3457545
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 3.102847e-06   cathode: 1.728772e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.99892e-07   chem = 1.728772e-07
+      utilization by chemRate = 0.2344717
+      utilization by outRate  = 0.05074312
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.0435654
+s species[] isFlux[] mflux[] = 1 H2O true 0.3893199
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 5.077774e-07   anode: 1.728772e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.914082e-07   chem = 2.17827e-08
+      utilization by chemRate = 0.1014758
+      utilization by outRate  = -0.8233951
+
+
+min mean max rhoCpF(air) = 290.4777 360.0344 426.2281
+min mean max rhoCpF(fuel) = 283.1464 331.7945 383.1785
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1286679, global = 0.0003924223
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.01178055, Final residual = 6.180123e-11, No Iterations 177
+T min mean max     = 1063.839    1146.825    1151.037
+
+ sum TcellEqn.source() =   5.999028
+
+ExecutionTime = 5.16 s
+
+
+Time = 6
+
+Tair min mean max  = 1063.839    1146.427    1151.036
+Tfuel min mean max = 1116.479    1146.993    1151.034
+min,mean,max(rhoAir): 0.2754044   0.3058915   0.3337931
+min,mean,max(rhoFuel): 0.02536925   0.02746136   0.03034439
+min,mean,max(muAir): 4.509061e-05   4.723757e-05   4.739252e-05
+min,mean,max(muFuel): 2.660621e-05   2.767121e-05   2.814849e-05
+min,mean,max(nuAir): 0.0001364056   0.0001544575   0.0001709076
+min,mean,max(nuFuel): 0.0009276339   0.001007906   0.001077147
+min,mean,max(kAir): 0.07396414   0.07846933   0.0787322
+min,mean,max(kFuel): 0.3820076   0.3906652   0.3975154
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.09759485, Final residual = 6.292814e-10, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.05527502, Final residual = 3.640328e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.09127815, Final residual = 1.358337e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.004527311, Final residual = 6.422868e-10, No Iterations 140
+time step continuity errors : sum local = 9.869129e-08, global = -2.473069e-09
+DICPCG:  Solving for p, Initial residual = 0.003527819, Final residual = 9.551732e-10, No Iterations 108
+time step continuity errors : sum local = 1.247173e-07, global = -3.970435e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.09125046, Final residual = 7.232046e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.04843868, Final residual = 1.340413e-10, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.07125361, Final residual = 9.202978e-11, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.01109248, Final residual = 9.6087e-10, No Iterations 167
+time step continuity errors : sum local = 3.323742e-07, global = 1.0702e-09
+DICPCG:  Solving for p, Initial residual = 0.009997096, Final residual = 9.288304e-10, No Iterations 161
+time step continuity errors : sum local = 2.657724e-07, global = -3.941713e-10
+ReAir  = 13.13817
+ReFuel = 1.95193
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.747732e-05  0.0002192643
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003464483  0.0009627802
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.16116, Final residual = 5.087181e-10, No Iterations 41
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.728113 , 0.7508942 , 0.7799888
+min,mean,max(YH2O): 0.2200112 , 0.2491058 , 0.271887
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.1185521, Final residual = 4.592712e-10, No Iterations 41
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.1997133 , 0.2178847 , 0.2328902
+min,mean,max(YN2): 0.7671098 , 0.7821153 , 0.8002867
+
+Solving electrochemistry
+min,max(anodeT): 1132.023 , 1151.037
+min,max(cathodeT): 1132.005 , 1151.037
+min,mean,max(XO2): 0.1790538 , 0.1886256 , 0.2017034
+min,mean,max(XH2): 0.9598345 , 0.9606619 , 0.9617227
+min,mean,max(XH2O): 0.03827732 , 0.03933809 , 0.04016548
+min,mean,max Nernst = 1.069353  1.072247  1.0782
+min,mean,max(i): 3916.548 , 4338.585 , 4744.289
+min,mean,max(iNew): 13111.32 , 13482.87 , 13639.63
+min,mean,max(iOld): 3916.548 , 4338.585 , 4744.289
+min,mean,max calBV(etaAn) = 0.01671999  0.0172706  0.0202898
+min,mean,max calBV(etaCa) = 0.003896802  0.004097216  0.004952543
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.069353 , 1.0782
+ibar0 = 5000    ibar = 4338.585    V = 0.7666851
+
+stack Voltage =0.7666851
+min,mean,max(current): 3916.548 , 4338.585 , 4744.289
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.555984e+08  2.832453e+08  3.097799e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.345328
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 3.082491e-06   cathode: 1.72664e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.887246e-07   chem = 1.72664e-07
+      utilization by chemRate = 0.2341825
+      utilization by outRate  = 0.06588943
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04351166
+s species[] isFlux[] mflux[] = 1 H2O true 0.3888396
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.797165e-07   anode: 1.72664e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.679518e-07   chem = 2.175583e-08
+      utilization by chemRate = 0.1013507
+      utilization by outRate  = -0.7141222
+
+
+min mean max rhoCpF(air) = 323.7581 359.7179 393.1684
+min mean max rhoCpF(fuel) = 308.5931 331.5101 357.6846
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1282358, global = 0.0003007991
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.01105019, Final residual = 7.682766e-11, No Iterations 182
+T min mean max     = 1064.887    1148.424    1152.651
+
+ sum TcellEqn.source() =   5.963302
+
+ExecutionTime = 5.97 s
+
+
+Time = 7
+
+Tair min mean max  = 1064.887    1148.016    1152.649
+Tfuel min mean max = 1117.855    1148.597    1152.647
+min,mean,max(rhoAir): 0.2939668   0.3054458   0.3302175
+min,mean,max(rhoFuel): 0.02667959   0.02760106   0.02889587
+min,mean,max(muAir): 4.511915e-05   4.725786e-05   4.741697e-05
+min,mean,max(muFuel): 2.66505e-05   2.783356e-05   2.837263e-05
+min,mean,max(nuAir): 0.0001366347   0.0001547317   0.0001603744
+min,mean,max(nuFuel): 0.0009749978   0.001008611   0.001029967
+min,mean,max(kAir): 0.0740225   0.07854365   0.0788098
+min,mean,max(kFuel): 0.3801751   0.3888229   0.3971071
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.06550734, Final residual = 4.151662e-10, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.07955439, Final residual = 2.77497e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.09989629, Final residual = 7.167397e-11, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.004565087, Final residual = 9.493064e-10, No Iterations 108
+time step continuity errors : sum local = 1.238022e-07, global = -5.394952e-09
+DICPCG:  Solving for p, Initial residual = 0.003593331, Final residual = 8.495852e-10, No Iterations 107
+time step continuity errors : sum local = 9.358177e-08, global = -4.177064e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.06396907, Final residual = 1.723015e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.09395466, Final residual = 8.558619e-11, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1121908, Final residual = 9.449949e-11, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.01305725, Final residual = 6.479777e-10, No Iterations 154
+time step continuity errors : sum local = 2.089723e-07, global = -3.92264e-10
+DICPCG:  Solving for p, Initial residual = 0.01237452, Final residual = 9.774227e-10, No Iterations 153
+time step continuity errors : sum local = 2.262413e-07, global = 4.254493e-10
+ReAir  = 13.12832
+ReFuel = 1.948507
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.767693e-05  0.0002198019
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003470989  0.0009651387
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.1419798, Final residual = 4.932801e-10, No Iterations 42
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7194471 , 0.7446776 , 0.779171
+min,mean,max(YH2O): 0.220829 , 0.2553224 , 0.2805529
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.09755206, Final residual = 4.12307e-10, No Iterations 40
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.1937057 , 0.2153591 , 0.2328694
+min,mean,max(YN2): 0.7671306 , 0.7846409 , 0.8062943
+
+Solving electrochemistry
+min,max(anodeT): 1133.696 , 1152.65
+min,max(cathodeT): 1133.677 , 1152.65
+min,mean,max(XO2): 0.1735254 , 0.1855159 , 0.2012399
+min,mean,max(XH2): 0.9581326 , 0.9591431 , 0.960651
+min,mean,max(XH2O): 0.03934895 , 0.0408569 , 0.04186741
+min,mean,max Nernst = 1.066122  1.06957  1.076429
+min,mean,max(i): 4184.849 , 4332.571 , 4504.291
+min,mean,max(iNew): 13419.34 , 13747.36 , 13916.5
+min,mean,max(iOld): 4184.849 , 4332.571 , 4504.291
+min,mean,max calBV(etaAn) = 0.01606018  0.01679665  0.01978576
+min,mean,max calBV(etaCa) = 0.003821093  0.004025842  0.004860643
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.066122 , 1.076429
+ibar0 = 5000    ibar = 4332.571    V = 0.7600108
+
+stack Voltage =0.7600108
+min,mean,max(current): 4184.849 , 4332.571 , 4504.291
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.766049e+08  2.864916e+08  2.978938e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3448492
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 3.01175e-06   cathode: 1.724246e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.664406e-07   chem = 1.724246e-07
+      utilization by chemRate = 0.2338579
+      utilization by outRate  = 0.09611291
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04345134
+s species[] isFlux[] mflux[] = 1 H2O true 0.3883006
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.462252e-07   anode: 1.724246e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.404278e-07   chem = 2.172567e-08
+      utilization by chemRate = 0.1012101
+      utilization by outRate  = -0.5859003
+
+
+min mean max rhoCpF(air) = 345.4557 359.3364 383.4171
+min mean max rhoCpF(fuel) = 323.3885 331.0434 340.7984
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1279297, global = 0.000257608
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.009614723, Final residual = 4.968416e-11, No Iterations 186
+T min mean max     = 1065.906    1150.153    1154.403
+
+ sum TcellEqn.source() =   5.936928
+
+ExecutionTime = 6.76 s
+
+
+Time = 8
+
+Tair min mean max  = 1065.906    1149.737    1154.402
+Tfuel min mean max = 1119.317    1150.331    1154.4
+min,mean,max(rhoAir): 0.2964184   0.3049629   0.3298914
+min,mean,max(rhoFuel): 0.02677122   0.0277379   0.02929913
+min,mean,max(muAir): 4.514689e-05   4.728292e-05   4.74452e-05
+min,mean,max(muFuel): 2.6699e-05   2.799683e-05   2.858819e-05
+min,mean,max(nuAir): 0.0001368538   0.0001550585   0.0001592854
+min,mean,max(nuFuel): 0.0009650776   0.001009551   0.001030337
+min,mean,max(kAir): 0.07407926   0.0786258   0.07889493
+min,mean,max(kFuel): 0.3782072   0.3870493   0.3970801
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.0486965, Final residual = 3.662899e-10, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.09928608, Final residual = 2.788843e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1277718, Final residual = 4.060269e-11, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.00408672, Final residual = 9.794816e-10, No Iterations 88
+time step continuity errors : sum local = 1.077838e-07, global = 1.393822e-09
+DICPCG:  Solving for p, Initial residual = 0.003097903, Final residual = 9.896721e-10, No Iterations 86
+time step continuity errors : sum local = 9.472925e-08, global = 2.805414e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.04714672, Final residual = 2.111402e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1370721, Final residual = 9.42392e-11, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1516773, Final residual = 9.774251e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.01510663, Final residual = 9.957709e-10, No Iterations 158
+time step continuity errors : sum local = 2.178847e-07, global = -5.247834e-10
+DICPCG:  Solving for p, Initial residual = 0.01390315, Final residual = 9.299794e-10, No Iterations 154
+time step continuity errors : sum local = 1.796066e-07, global = 4.484492e-10
+ReAir  = 13.11827
+ReFuel = 1.944769
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.789292e-05  0.0002203864
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003477967  0.0009677018
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.1283289, Final residual = 6.082007e-10, No Iterations 42
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7112864 , 0.7385743 , 0.7782917
+min,mean,max(YH2O): 0.2217083 , 0.2614257 , 0.2887136
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.08150288, Final residual = 2.736553e-10, No Iterations 40
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.1878987 , 0.2129924 , 0.2328492
+min,mean,max(YN2): 0.7671508 , 0.7870076 , 0.8121013
+
+Solving electrochemistry
+min,max(anodeT): 1135.447 , 1154.402
+min,max(cathodeT): 1135.429 , 1154.403
+min,mean,max(XO2): 0.1681896 , 0.1825904 , 0.2008063
+min,mean,max(XH2): 0.9564976 , 0.9576744 , 0.9596569
+min,mean,max(XH2O): 0.04034306 , 0.04232562 , 0.0435024
+min,mean,max Nernst = 1.063021  1.067006  1.074778
+min,mean,max(i): 4215.39 , 4325.924 , 4443.674
+min,mean,max(iNew): 13739.75 , 14028.42 , 14210.11
+min,mean,max(iOld): 4215.39 , 4325.924 , 4443.674
+min,mean,max calBV(etaAn) = 0.01547933  0.01632514  0.01931893
+min,mean,max calBV(etaCa) = 0.003739497  0.003947854  0.004759871
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.063021 , 1.074778
+ibar0 = 5000    ibar = 4325.924    V = 0.75327
+
+stack Voltage =0.75327
+min,mean,max(current): 4215.39 , 4325.924 , 4443.674
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.823628e+08  2.897235e+08  2.975155e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3443202
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.961928e-06   cathode: 1.721601e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.491005e-07   chem = 1.721601e-07
+      utilization by chemRate = 0.2334991
+      utilization by outRate  = 0.1196312
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04338468
+s species[] isFlux[] mflux[] = 1 H2O true 0.3877049
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.306199e-07   anode: 1.721601e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.266134e-07   chem = 2.169234e-08
+      utilization by chemRate = 0.1010549
+      utilization by outRate  = -0.5215456
+
+
+min mean max rhoCpF(air) = 349.6685 358.9131 383.0991
+min mean max rhoCpF(fuel) = 323.27 330.5679 341.3449
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1277047, global = 0.0002476423
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.008403818, Final residual = 4.926436e-11, No Iterations 180
+T min mean max     = 1066.889    1151.925    1156.208
+
+ sum TcellEqn.source() =   5.91621
+
+ExecutionTime = 7.51 s
+
+
+Time = 9
+
+Tair min mean max  = 1066.889    1151.501    1156.207
+Tfuel min mean max = 1120.793    1152.107    1156.205
+min,mean,max(rhoAir): 0.2909529   0.3044502   0.3295862
+min,mean,max(rhoFuel): 0.02677363   0.02787838   0.02966754
+min,mean,max(muAir): 4.517364e-05   4.731038e-05   4.747521e-05
+min,mean,max(muFuel): 2.674927e-05   2.815912e-05   2.879513e-05
+min,mean,max(nuAir): 0.0001370617   0.0001554122   0.0001622602
+min,mean,max(nuFuel): 0.0009569873   0.001010317   0.001041163
+min,mean,max(kAir): 0.074134   0.07871099   0.07898294
+min,mean,max(kFuel): 0.3758364   0.385324   0.3970379
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.03708273, Final residual = 1.617174e-10, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1112852, Final residual = 2.564917e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1448665, Final residual = 9.541083e-10, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.003573214, Final residual = 9.210148e-10, No Iterations 86
+time step continuity errors : sum local = 8.820288e-08, global = -1.308977e-09
+DICPCG:  Solving for p, Initial residual = 0.0026001, Final residual = 8.61231e-10, No Iterations 85
+time step continuity errors : sum local = 7.658114e-08, global = -1.737386e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.03527754, Final residual = 2.27173e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1640091, Final residual = 2.664877e-10, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1757118, Final residual = 8.246187e-10, No Iterations 3
+DICPCG:  Solving for p, Initial residual = 0.01745509, Final residual = 8.222637e-10, No Iterations 170
+time step continuity errors : sum local = 1.828303e-07, global = -2.362241e-10
+DICPCG:  Solving for p, Initial residual = 0.01393558, Final residual = 7.93722e-10, No Iterations 157
+time step continuity errors : sum local = 1.636693e-07, global = -2.423544e-10
+ReAir  = 13.10836
+ReFuel = 1.940908
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.81148e-05  0.000220989
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003485114  0.0009703429
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.1179441, Final residual = 8.24718e-10, No Iterations 42
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.7035527 , 0.7325916 , 0.7773893
+min,mean,max(YH2O): 0.2226107 , 0.2674084 , 0.2964473
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.06880981, Final residual = 3.226271e-10, No Iterations 40
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.1822968 , 0.2107802 , 0.2328298
+min,mean,max(YN2): 0.7671702 , 0.7892198 , 0.8177032
+
+Solving electrochemistry
+min,max(anodeT): 1137.199 , 1156.208
+min,max(cathodeT): 1137.181 , 1156.208
+min,mean,max(XO2): 0.1630498 , 0.1798384 , 0.2004004
+min,mean,max(XH2): 0.9549184 , 0.9562496 , 0.9587053
+min,mean,max(XH2O): 0.04129473 , 0.04375045 , 0.04508164
+min,mean,max Nernst = 1.06004  1.064556  1.073207
+min,mean,max(i): 4137.664 , 4318.584 , 4505.168
+min,mean,max(iNew): 14067.86 , 14321.57 , 14515.22
+min,mean,max(iOld): 4137.664 , 4318.584 , 4505.168
+min,mean,max calBV(etaAn) = 0.01477507  0.01586742  0.01887748
+min,mean,max calBV(etaCa) = 0.003657367  0.00386808  0.004655764
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.06004 , 1.073207
+ibar0 = 5000    ibar = 4318.584    V = 0.7464559
+
+stack Voltage =0.7464559
+min,mean,max(current): 4137.664 , 4318.584 , 4505.168
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.80707e+08  2.929373e+08  3.054857e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3437359
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.95407e-06   cathode: 1.71868e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.412574e-07   chem = 1.71868e-07
+      utilization by chemRate = 0.2331029
+      utilization by outRate  = 0.1302688
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.04331106
+s species[] isFlux[] mflux[] = 1 H2O true 0.387047
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.330163e-07   anode: 1.71868e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.263862e-07   chem = 2.165553e-08
+      utilization by chemRate = 0.1008834
+      utilization by outRate  = -0.520487
+
+
+min mean max rhoCpF(air) = 343.4648 358.4523 382.803
+min mean max rhoCpF(fuel) = 319.4737 330.1589 344.0466
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.1275073, global = 0.000253664
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.007501267, Final residual = 9.792956e-11, No Iterations 276
+T min mean max     = 1067.877    1153.706    1158.03
+
+ sum TcellEqn.source() =   5.898295
+
+ExecutionTime = 8.52 s
+
+
+Time = 10
+
+Tair min mean max  = 1067.877    1153.276    1158.029
+Tfuel min mean max = 1122.261    1153.891    1158.027
+min,mean,max(rhoAir): 0.2900646   0.3039144   0.3292833
+min,mean,max(rhoFuel): 0.02677211   0.02802374   0.02981806
+min,mean,max(muAir): 4.520054e-05   4.733932e-05   4.750625e-05
+min,mean,max(muFuel): 2.679989e-05   2.831958e-05   2.899428e-05
+min,mean,max(nuAir): 0.0001372695   0.0001557816   0.0001627625
+min,mean,max(nuFuel): 0.0009582978   0.001010816   0.001039826
+min,mean,max(kAir): 0.07418904   0.07879734   0.07907203
+min,mean,max(kFuel): 0.3735891   0.3836404   0.397084
+
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.02792045, Final residual = 1.319931e-10, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.09965065, Final residual = 2.375904e-10, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1267259, Final residual = 8.062415e-10, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.003247766, Final residual = 9.850229e-10, No Iterations 95
+time step continuity errors : sum local = 8.721266e-08, global = 2.027356e-09
+DICPCG:  Solving for p, Initial residual = 0.002228453, Final residual = 8.07468e-10, No Iterations 87
+time step continuity errors : sum local = 7.004188e-08, global = -1.726496e-09
+
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.02640211, Final residual = 1.01325e-10, No Iterations 3
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1617742, Final residual = 6.000264e-10, No Iterations 3
+DILUPBiCG:  Solving for Uz, Initial residual = 0.1626492, Final residual = 4.139516e-11, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.01683398, Final residual = 8.494705e-10, No Iterations 162
+time step continuity errors : sum local = 1.708711e-07, global = -9.229012e-10
+DICPCG:  Solving for p, Initial residual = 0.01115374, Final residual = 9.214519e-10, No Iterations 157
+time step continuity errors : sum local = 1.734572e-07, global = -3.80449e-10
+ReAir  = 13.09854
+ReFuel = 1.937037
+
+airSpecies O2
+
+airDiffModels[0]
+  zone size = 12480
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: O2 31.9988 16.3
+   background speciesB molWt diffVol: N2 28.0134 18.5
+
+airDiffModels[1]
+  zone size = 4800
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 2.9864e-05
+
+airDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 1.054e-05
+
+diffSpAir[O2]
+    primitiveFieldRef min mean max = 1.054e-05  9.833876e-05  0.0002215979
+
+fuelSpecies H2
+
+fuelDiffModels[0]
+  zone size = 17280
+diffusivityModels::binaryFSG:
+    diffusing speciesA molWt diffVol: H2 2.01594 6.12
+   background speciesB molWt diffVol: H2O 18.01534 13.1
+
+fuelDiffModels[1]
+  zone size = 9600
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 0.00013124
+
+fuelDiffModels[2]
+  zone size = 2880
+diffusivityModels::fixedDiffusivity: 
+   diff0 = diff0 [0 2 -1 0 0 0 0] 4.6321e-05
+
+diffSpFuel[H2]
+    primitiveFieldRef() min mean max = 4.6321e-05  0.0003492322  0.0009730102
+
+Solving fuel scalars
+ Yfuel[i].name() = YH2
+DILUPBiCG:  Solving for YH2, Initial residual = 0.1097029, Final residual = 4.977645e-10, No Iterations 41
+ Yfuel[i].name() = YH2O
+inertIndex = 1
+min,mean,max(YH2): 0.6961794 , 0.726737 , 0.776492
+min,mean,max(YH2O): 0.223508 , 0.273263 , 0.3038206
+
+Solving air scalars
+ Yair[i].name() = YO2
+DILUPBiCG:  Solving for YO2, Initial residual = 0.05857971, Final residual = 1.715782e-10, No Iterations 40
+ Yair[i].name() = YN2
+inertIndex = 1
+min,mean,max(YO2): 0.1769011 , 0.2087164 , 0.2328115
+min,mean,max(YN2): 0.7671885 , 0.7912836 , 0.8230989
+
+Solving electrochemistry
+min,max(anodeT): 1138.918 , 1158.03
+min,max(cathodeT): 1138.9 , 1158.03
+min,mean,max(XO2): 0.1581062 , 0.1772522 , 0.2000265
+min,mean,max(XH2): 0.9533849 , 0.9548645 , 0.9577774
+min,mean,max(XH2O): 0.04222258 , 0.04513554 , 0.04661511
+min,mean,max Nernst = 1.057166  1.062211  1.071698
+min,mean,max(i): 4125.033 , 4310.651 , 4501.885
+min,mean,max(iNew): 14383.2 , 14625.13 , 14830.11
+min,mean,max(iOld): 4125.033 , 4310.651 , 4501.885
+min,mean,max calBV(etaAn) = 0.01430693  0.01542756  0.01845201
+min,mean,max calBV(etaCa) = 0.003576577  0.003788391  0.004551939
+
+Solve current
+
+layer 1
+
+sumVolume3.84e-09
+min,max(Nernst): 1.057166 , 1.071698
+ibar0 = 5000    ibar = 4310.651    V = 0.7395624
+
+stack Voltage =0.7395624
+min,mean,max(current): 4125.033 , 4310.651 , 4501.885
+
+Calculating electrochemical heating
+min,mean,max(electrochemicalHeating): 2.834307e+08  2.961407e+08  3.091699e+08
+
+air species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 O2 true -0.3431045
+s species[] isFlux[] mflux[] = 1 N2 false 0
+
+
+air mass rates: 
+   inlet: 3.1644e-06   outlet: 2.972068e-06   cathode: 1.715523e-07
+O2 mass rates: 
+   inlet = 7.373052e-07   outlet = 6.39296e-07   chem = 1.715523e-07
+      utilization by chemRate = 0.2326747
+      utilization by outRate  = 0.132929
+
+fuel species electrochemical fluxes and YEqn BCs
+s species[] isFlux[] mflux[] = 0 H2 true -0.0432315
+s species[] isFlux[] mflux[] = 1 H2O true 0.386336
+
+
+fuel mass rates: 
+   inlet: 2.745e-07   outlet: 4.42363e-07   anode: 1.715523e-07
+H2 mass rates: 
+   inlet = 2.14659e-07   outlet = 3.312376e-07   chem = 2.161575e-08
+      utilization by chemRate = 0.1006981
+      utilization by outRate  = -0.5430876
+
+
+min mean max rhoCpF(air) = 342.635 357.9605 382.5097
+min mean max rhoCpF(fuel) = 319.6059 329.8313 343.261
+
+ELECTROLYTE FLUX MAPPING ACTIVATED
+time step continuity errors : sum local = 0.127301, global = 0.0002625094
+
+Solving energy
+DILUPBiCG:  Solving for T, Initial residual = 0.006898366, Final residual = 8.587191e-11, No Iterations 175
+T min mean max     = 1068.848    1155.485    1159.856
+
+ sum TcellEqn.source() =   5.881188
+
+ExecutionTime = 9.41 s
+
+
+End
+
