@@ -11985,4 +11985,29 @@ DILUPBiCG:  Solving for Uz, Initial residual = 0.01059703, Final residual = 6.05
 DICPCG:  Solving for p, Initial residual = 0.002195169, Final residual = 8.953613e-10, No Iterations 147
 DICPCG:  Solving for p, Initial residual = 0.001410542, Final residual = 5.686782e-10, No Iterations 147
 DILUPBiCG:  Solving for T, Initial residual = 0.03191551, Final residual = 5.213016e+20, No Iterations 5000
-T min mean max     = -1.550111e+25    3.850549e+22    2.8
+T min mean max     = -1.550111e+25    3.850549e+22    2.894905e+26
+
+
+Time = 445
+Tair min mean max  = -1.550111e+25    1.540168e+23    2.894905e+26
+Tfuel min mean max = -2.585116e+17    3.294801e+13    6.008663e+17
+min,mean,max(rhoAir): -27.23544   0.001833837   5.634366
+min,mean,max(rhoFuel): -4.812829   0.001068155   0.934865
+min,mean,max(muAir): -1.939121e+135   -1.920152e+131   6.538022e-05
+min,mean,max(muFuel): -6.864443e+69   2.504754e+78   1.301454e+82
+min,mean,max(nuAir): -1.598557e+159   -1.490046e+155   2.017263e+150
+min,mean,max(nuFuel): -5.314416e+95   3.559543e+94   1.947775e+98
+min,mean,max(kAir): -1.071234e+139   -1.060654e+135   0.1090454
+min,mean,max(kFuel): -1.619075e+67   6.468812e+82   3.353801e+86
+Solving fuel flow
+DILUPBiCG:  Solving for Ux, Initial residual = 4.800578e-06, Final residual = 8.482292e-13, No Iterations 1
+DILUPBiCG:  Solving for Uy, Initial residual = 0.1330613, Final residual = 2.540324e-11, No Iterations 1
+DILUPBiCG:  Solving for Uz, Initial residual = 0.8932728, Final residual = 1.932673e-10, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 0.1944877, Final residual = 9.340615e+19, No Iterations 700
+DICPCG:  Solving for p, Initial residual = 2.809698e-57, Final residual = 5.810475e-57, No Iterations 1
+Solving air flow
+DILUPBiCG:  Solving for Ux, Initial residual = 0.4967572, Final residual = 5.918655e-11, No Iterations 4
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2096825, Final residual = 7.24956e-11, No Iterations 4
+DILUPBiCG:  Solving for Uz, Initial residual = 0.009012779, Final residual = 1.632119e-11, No Iterations 4
+DICPCG:  Solving for p, Initial residual = 0.08243005, Final residual = 8.084449e+31, No Iterations 700
+DICPCG:  Solving for p, Initial residual = 2.709107e-94, Final residual = 2.729586e-94, No Iterations 1

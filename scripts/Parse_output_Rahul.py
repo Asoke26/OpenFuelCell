@@ -1,8 +1,8 @@
 
-raw_input = "raw-input-output.txt"
+raw_input = "/home/ad26/Projects/Fall-19/EECS-245/OpenFuelCell/Data/raw-output-quicktestStack.txt"
 f=open(raw_input,"r")
 
-out_file = "out.csv"
+out_file = "/home/ad26/Projects/Fall-19/EECS-245/OpenFuelCell/Data/quicktestStack-formatted-output.csv"
 w_f = open(out_file,'w+')
 
 line = "Time,Tair_min,Tair_mean,Tair_max,Tfuel_min,Tfuel_mean,Tfuel_max,rhoAir_min,rhoAir_mean,rhoAir_max,rhoFuel_min,rhoFuel_mean,rhoFuel_max,muAir_min,muAir_mean,muAir_max,muFuel_min,muFuel_mean,muFuel_max,nuAir_min,nuAir_mean,nuAir_max,nuFuel_min,nuFuel_mean,nuFuel_max,kAir_min,kAir_mean,kAir_max,kFuel_min,kFuel_mean,kFuel_max,sumVolume,Nern_min,Nern_max,ibar0,ibar,V,stack_Voltage,min_curr,mean_curr,max_curr,Energy_Ir,Energy_Fr,Energy_t_min,Energy_t_mean,Energy_t_max"
