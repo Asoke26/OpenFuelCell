@@ -11,15 +11,17 @@ We  will  study  a  specific  HPC  application,  openFuelCell  in  this  project
 In  the  openFuelCell  project ,  you  can  find  and  run  the  sofcFoam  model  using  the  instructions  in “http://openfuelcell.sourceforge.net/doc/quick-start”.  Use  scripts  under  “/openfuelcell/run/ crossFlow”  to run your openFuelCell code. To use this scrip to run crossFlow, you will need to OpenFOAM version 6. See https://openfoam.org/download/6-ubuntu/ for details.
 
 Our Contribution :  
+-------------------
+
 * Analyze openfuelcel :   
   * Profiling : tool used --- gprof  
   * Identify Memory Leak : tool used --- valgrind  
   * Trace Code Stack : tool used --- gdb  
-  * Collecting DataPoints :  
-    * openfuelcell Models used for datapoint generation : coFlow, crossFlow, quickTest, quickTestStack  
-    * Parsing data : Used a python based script for parsing data  
-    * ML Model Training :  
-      * MLP : In Progress.  
+* Collecting DataPoints :  
+   * openfuelcell Models used for datapoint generation : coFlow, crossFlow, quickTest, quickTestStack  
+   * Parsing data : Used a python based script for parsing data  
+* ML Model Implementation :  
+   * MLP : In Progress.  
 
 
 Notes :
