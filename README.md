@@ -34,6 +34,6 @@ Notes :
 
 References :
 ------------
-[1] http://openfuelcell.sourceforge.net/
-[2] https://github.com/Cantera/cantera
+[1] http://openfuelcell.sourceforge.net/ <br />
+[2] https://github.com/Cantera/cantera <br />
 [3] http://courses.washington.edu/mengr331/old/su09/Cantera%20stuff/Cantera-1.7.0-src/cantera/Cantera/python/examples/fuel_cells/sofc.cti
