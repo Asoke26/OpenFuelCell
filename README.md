@@ -30,3 +30,10 @@ Notes :
 
 * During datapoint collection we were facing floating point exception error after certain timesteps. For quickTestStack(2614) we were able to get highest number of datapoint among all model’s. For other model’s (coFlow, crossflow, counterFlow) single iteration of timestep takes 5 minutes – 30 minutes. For coFlow model it took more than 3 hours to collect 120 datapoints.
 ![alt text](https://github.com/Asoke26/OpenFuelCell/blob/master/openfuelcell-coredump-floating-point.png)
+
+
+References :
+------------
+[1] http://openfuelcell.sourceforge.net/ <br />
+[2] https://github.com/Cantera/cantera <br />
+[3] http://courses.washington.edu/mengr331/
