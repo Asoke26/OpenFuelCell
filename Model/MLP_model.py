@@ -1,10 +1,3 @@
-#######################################
-#       Asoke Datta                   #
-#               PhD Student           #
-#   University of California, Merced  #
-#######################################
-
-
 # Importing Required Library
 import numpy as np
 import tensorflow as tf
